@@ -3,17 +3,7 @@ let poseNet;
 let pose;
 let skeleton;
 let thirtysecs;
-let posesArray = [
-  "Tree",
-  "Chair",
-  "Cobra",
-  "Warrior III",
-  "Dog",
-  "Shoulderstand",
-  "Triangle",
-  "Warrior II",
-  "Bridge",
-];
+let posesArray = ["Mountain", "Tree", "Chair", "Triangle", "Warrior II"];
 var imgArray = new Array();
 
 var poseImage;
@@ -38,23 +28,15 @@ function setup() {
   poseNet.on("pose", gotPoses);
 
   imgArray[0] = new Image();
-  imgArray[0].src = "gyoga/tree.svg";
+  imgArray[0].src = "gyoga/mountain.svg";
   imgArray[1] = new Image();
-  imgArray[1].src = "gyoga/chair.svg";
+  imgArray[1].src = "gyoga/tree.svg";
   imgArray[2] = new Image();
-  imgArray[2].src = "gyoga/cobra.svg";
+  imgArray[2].src = "gyoga/chair.svg";
   imgArray[3] = new Image();
-  imgArray[3].src = "gyoga/warrior3.svg";
+  imgArray[3].src = "gyoga/triangle.svg";
   imgArray[4] = new Image();
-  imgArray[4].src = "gyoga/dog.svg";
-  imgArray[5] = new Image();
-  imgArray[5].src = "gyoga/shoulderstand.svg";
-  imgArray[6] = new Image();
-  imgArray[6].src = "gyoga/triangle.svg";
-  imgArray[7] = new Image();
-  imgArray[7].src = "gyoga/warrior2.svg";
-  imgArray[8] = new Image();
-  imgArray[8].src = "gyoga/bridge.svg";
+  imgArray[4].src = "gyoga/warrior2.svg";
 
   poseCounter = 0;
   targetLabel = 1;
@@ -68,16 +50,16 @@ function setup() {
 
   let options = {
     inputs: 34,
-    outputs: 6,
+    outputs: 5,
     task: "classification",
     debug: true,
   };
 
   yogi = ml5.neuralNetwork(options);
   const modelInfo = {
-    model: "model/model2.json",
-    metadata: "model/model_meta2.json",
-    weights: "model/model.weights2.bin",
+    model: "model/model.json",
+    metadata: "model/model_meta.json",
+    weights: "model/model.weights.bin",
   };
   yogi.load(modelInfo, yogiLoaded);
 }
@@ -115,7 +97,7 @@ function gotResult(error, results) {
       console.log(iterationCounter);
 
       if (iterationCounter == 10) {
-        console.log("30!");
+        console.log("10!");
         iterationCounter = 0;
         nextPose();
       } else {
@@ -190,8 +172,6 @@ function nextPose() {
     document.getElementById("sparkles").style.display = "block";
   } else {
     console.log("Well done, you all poses!");
-    //var stars = document.getElementById("starsid");
-    //stars.classList.add("stars.animated");
     errorCounter = 0;
     iterationCounter = 0;
     poseCounter = poseCounter + 1;
