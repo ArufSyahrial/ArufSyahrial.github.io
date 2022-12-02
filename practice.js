@@ -36,7 +36,7 @@ function setup() {
   targetLabel = 1;
   target = posesArray[poseCounter];
   document.getElementById("poseName").textContent = target;
-  timeLeft = 30;
+  timeLeft = 10;
   document.getElementById("time").textContent = "00:" + timeLeft;
   errorCounter = 0;
   iterationCounter = 0;
@@ -93,8 +93,8 @@ function gotResult(error, results) {
 
       console.log(iterationCounter);
 
-      if (iterationCounter == 30) {
-        console.log("30!");
+      if (iterationCounter == 10) {
+        console.log("10!");
         iterationCounter = 0;
         nextPose();
       } else {
@@ -113,7 +113,7 @@ function gotResult(error, results) {
       if (errorCounter >= 4) {
         console.log("four errors");
         iterationCounter = 0;
-        timeLeft = 30;
+        timeLeft = 10;
         if (timeLeft < 10) {
           document.getElementById("time").textContent = "00:0" + timeLeft;
         } else {
@@ -181,7 +181,7 @@ function nextPose() {
     document.getElementById("welldone").textContent = "Well done, next pose!";
     document.getElementById("sparkles").style.display = "block";
     console.log("classifying again");
-    timeLeft = 30;
+    timeLeft = 10;
     document.getElementById("time").textContent = "00:" + timeLeft;
     setTimeout(classifyPose, 4000);
   }
