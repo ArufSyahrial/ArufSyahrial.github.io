@@ -164,13 +164,11 @@ function draw() {
 function nextPose() {
   if (poseCounter >= 9) {
     console.log("Well done, you have learnt all poses!");
-    document.getElementById("finish").textContent = "Amazing!";
-    document.getElementById("welldone").textContent = "All poses done.";
+    document.getElementById("finish").textContent = "Mantap!";
+    document.getElementById("welldone").textContent = "Semua pose selesai";
     document.getElementById("sparkles").style.display = "block";
   } else {
-    console.log("Well done, you all poses!");
-    //var stars = document.getElementById("starsid");
-    //stars.classList.add("stars.animated");
+    console.log("Well done, you have learnt all poses!");
     errorCounter = 0;
     iterationCounter = 0;
     poseCounter = poseCounter + 1;
@@ -178,7 +176,8 @@ function nextPose() {
     console.log("next pose target label" + targetLabel);
     target = posesArray[poseCounter];
     document.getElementById("poseName").textContent = target;
-    document.getElementById("welldone").textContent = "Well done, next pose!";
+    document.getElementById("welldone").textContent =
+      "Mantap, pose selanjutnya!";
     document.getElementById("sparkles").style.display = "block";
     console.log("classifying again");
     timeLeft = 10;
