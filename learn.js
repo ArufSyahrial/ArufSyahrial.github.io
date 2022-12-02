@@ -3,7 +3,15 @@ let poseNet;
 let pose;
 let skeleton;
 let thirtysecs;
-let posesArray = ["Mountain", "Tree", "Chair", "Triangle", "Warrior II"];
+// let posesArray = ["Mountain", "Tree", "Chair", "Triangle", "Warrior II"];
+let posesArray = [
+  "Mountain",
+  "Tree",
+  "Downward Dog",
+  "Warrior I",
+  "Warrior II",
+  "Chair",
+];
 var imgArray = new Array();
 
 var poseImage;
@@ -20,23 +28,36 @@ var target;
 var timeLeft;
 
 function setup() {
-  var canvas = createCanvas(640, 600);
+  var canvas = createCanvas(640, 480);
   canvas.position(250, 150);
   video = createCapture(VIDEO);
   video.hide();
   poseNet = ml5.poseNet(video, modelLoaded);
   poseNet.on("pose", gotPoses);
 
+  // imgArray[0] = new Image();
+  // imgArray[0].src = "gyoga/mountain.svg";
+  // imgArray[1] = new Image();
+  // imgArray[1].src = "gyoga/tree.svg";
+  // imgArray[2] = new Image();
+  // imgArray[2].src = "gyoga/chair.svg";
+  // imgArray[3] = new Image();
+  // imgArray[3].src = "gyoga/triangle.svg";
+  // imgArray[4] = new Image();
+  // imgArray[4].src = "gyoga/warrior2.svg";
+
   imgArray[0] = new Image();
   imgArray[0].src = "gyoga/mountain.svg";
   imgArray[1] = new Image();
   imgArray[1].src = "gyoga/tree.svg";
   imgArray[2] = new Image();
-  imgArray[2].src = "gyoga/chair.svg";
+  imgArray[2].src = "gyoga/dog.svg";
   imgArray[3] = new Image();
-  imgArray[3].src = "gyoga/triangle.svg";
+  imgArray[3].src = "gyoga/warrior1.svg";
   imgArray[4] = new Image();
   imgArray[4].src = "gyoga/warrior2.svg";
+  imgArray[5] = new Image();
+  imgArray[5].src = "gyoga/chair.svg";
 
   poseCounter = 0;
   targetLabel = 1;
@@ -50,16 +71,20 @@ function setup() {
 
   let options = {
     inputs: 34,
-    outputs: 5,
+    // outputs: 5,
+    outputs: 6,
     task: "classification",
     debug: true,
   };
 
   yogi = ml5.neuralNetwork(options);
   const modelInfo = {
-    model: "model/model.json",
-    metadata: "model/model_meta.json",
-    weights: "model/model.weights.bin",
+    // model: "model/model.json",
+    // metadata: "model/model_meta.json",
+    // weights: "model/model.weights.bin",
+    model: "modelv2/model2.json",
+    metadata: "modelv2/model_meta2.json",
+    weights: "modelv2/model.weights2.bin",
   };
   yogi.load(modelInfo, yogiLoaded);
 }

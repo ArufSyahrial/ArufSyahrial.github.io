@@ -2,18 +2,15 @@ let video;
 let poseNet;
 let pose;
 let skeleton;
+// let posesArray = ["Mountain", "Tree", "Chair", "Triangle", "Warrior II"];
 let posesArray = [
+  "Mountain",
   "Tree",
-  "Chair",
-  "Cobra",
-  "Warrior III",
-  "Dog",
-  "Shoulderstand",
-  "Triangle",
+  "Downward Dog",
+  "Warrior I",
   "Warrior II",
-  "Bridge",
+  "Chair",
 ];
-
 var poseImage;
 
 let yogi;
@@ -28,7 +25,7 @@ var target;
 var timeLeft;
 
 function setup() {
-  var canvas = createCanvas(500, 600);
+  var canvas = createCanvas(640, 480);
   canvas.position(250, 130);
   video = createCapture(VIDEO);
   video.hide();
@@ -46,6 +43,7 @@ function setup() {
 
   let options = {
     inputs: 34,
+    // outputs: 5,
     outputs: 6,
     task: "classification",
     debug: true,
@@ -53,9 +51,12 @@ function setup() {
 
   yogi = ml5.neuralNetwork(options);
   const modelInfo = {
-    model: "model/model2.json",
-    metadata: "model/model_meta2.json",
-    weights: "model/model.weights2.bin",
+    // model: "model/model.json",
+    // metadata: "model/model_meta.json",
+    // weights: "model/model.weights.bin",
+    model: "modelv2/model2.json",
+    metadata: "modelv2/model_meta2.json",
+    weights: "modelv2/model.weights2.bin",
   };
   yogi.load(modelInfo, yogiLoaded);
 }
