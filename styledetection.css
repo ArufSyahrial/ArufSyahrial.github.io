@@ -177,6 +177,10 @@ http://stackoverflow.com/a/34696029/383904
   background: rgba(255, 255, 255, 1);
 }
 
+#s13:target ~ .bullets > *:nth-child(13) {
+  background: rgba(255, 255, 255, 1);
+}
+
 /* More slides? Add here more rules */
 
 /* PREV/NEXT CONTAINERS VISIBILITY */
@@ -234,6 +238,10 @@ http://stackoverflow.com/a/34696029/383904
 }
 
 #s12:target ~ .prevNext > *:nth-child(12) {
+  visibility: visible;
+}
+
+#s13:target ~ .prevNext > *:nth-child(13) {
   visibility: visible;
 }
 
@@ -299,6 +307,11 @@ http://stackoverflow.com/a/34696029/383904
 #s12:target ~ .slider {
   transform: translateX(-1100%);
   -webkit-transform: translateX(-1100%);
+}
+
+#s13:target ~ .slider {
+  transform: translateX(-1200%);
+  -webkit-transform: translateX(-1200%);
 }
 
 /* More slides? Add here more rules */
